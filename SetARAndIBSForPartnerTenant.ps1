@@ -108,7 +108,7 @@ try
     Connect-MgGraph -Scopes "Organization.Read.All,Policy.Read.All,Policy.ReadWrite.CrossTenantAccess"
     $org = Get-MgOrganization
     Write-Host "Current tenant $($org.Id) ($($org.VerifiedDomains.Name))" -ForegroundColor Blue
-    $ids = $partnerTenantIds -split ',' | % { GetOrSetPolicies $_ $Peek $value }
+    $partnerTenantIds -split ',' | % { GetOrSetPolicies $_ $Peek $value }
 }
 catch
 {
